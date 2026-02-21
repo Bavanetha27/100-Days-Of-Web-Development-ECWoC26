@@ -3,12 +3,22 @@ const rollBtn = document.getElementById("rollBtn");
 const resetBtn = document.getElementById("resetBtn");
 const resultText = document.getElementById("resultText");
 const historyList = document.getElementById("historyList");
+const rollSound = document.getElementById("rollSound");
+
+let totalRolls = 0;
 
 rollBtn.addEventListener("click", rollDice);
 resetBtn.addEventListener("click", resetHistory);
 
 function rollDice() {
   const num = Math.floor(Math.random() * 6) + 1;
+  totalRolls++;
+
+  document.getElementById("rollCount").innerText = totalRolls;
+  document.getElementById("lastRoll").innerText = num;
+
+  rollSound.currentTime = 0;
+  rollSound.play();
 
   let x = 0, y = 0;
   switch (num) {
@@ -23,7 +33,7 @@ function rollDice() {
   x += 360 * 3;
   y += 360 * 3;
 
-  cube.style.transform = `translateZ(-50px) rotateX(${x}deg) rotateY(${y}deg)`;
+  cube.style.transform = `translateZ(-70px) rotateX(${x}deg) rotateY(${y}deg)`;
 
   resultText.innerText = "Rolling...";
 
@@ -39,20 +49,11 @@ function addToHistory(num) {
   historyList.prepend(li);
 }
 
-// function resetHistory() {
-//   historyList.innerHTML = "";
-//   resultText.innerText = "Roll the dice!";
-// }
 function resetHistory() {
   historyList.innerHTML = "";
   resultText.innerText = "Roll the dice!";
-
-  // Reset dice position
-  cube.style.transform = `translateZ(-50px) rotateX(0deg) rotateY(0deg)`;
-}
-
-
-function resetHistory() {
-  historyList.innerHTML = "";
-  resultText.innerText = "Roll the dice!";
+  totalRolls = 0;
+  document.getElementById("rollCount").innerText = 0;
+  document.getElementById("lastRoll").innerText = "-";
+  cube.style.transform = `translateZ(-70px) rotateX(0deg) rotateY(0deg)`;
 }

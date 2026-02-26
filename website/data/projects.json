@@ -2479,12 +2479,12 @@
     "day": 212,
     "title": "Project 212",
     "tech": [
-      "HTML",
-      "CSS",
-      "JS"
+      "React",
+      "Nodejs",
+      "Socket io"
     ],
     "folder": "Day 212",
-    "level": "CAPSTONE",
+    "level": "Smart Home",
     "description": "Smart home controller with device management."
   },
   {

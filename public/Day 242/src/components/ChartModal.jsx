@@ -6,10 +6,19 @@ import {
   PointElement,
   LinearScale,
   CategoryScale,
+  Tooltip,
+  Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale);
+ChartJS.register(
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Tooltip,
+  Legend
+);
 
 function ChartModal({ coin, close }) {
   const [chartData, setChartData] = useState([]);
@@ -19,11 +28,15 @@ function ChartModal({ coin, close }) {
   }, []);
 
   const fetchChart = async () => {
-    const res = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart`,
-      { params: { vs_currency: "usd", days: 7 } }
-    );
-    setChartData(res.data.prices);
+    try {
+      const res = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart`,
+        { params: { vs_currency: "usd", days: 7 } }
+      );
+      setChartData(res.data.prices);
+    } catch (error) {
+      console.error("Error fetching chart:", error);
+    }
   };
 
   const data = {
@@ -32,31 +45,37 @@ function ChartModal({ coin, close }) {
     ),
     datasets: [
       {
-        label: coin.name,
+        label: `${coin.name} Price`,
         data: chartData.map((p) => p[1]),
-        borderColor: "cyan",
+        borderColor: "#06b6d4",
+        backgroundColor: "rgba(6,182,212,0.2)",
+        tension: 0.4,
       },
     ],
   };
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex justify-center items-center z-50">
-  <div className="bg-white/5 border border-white/10 backdrop-blur-xl p-8 rounded-3xl w-11/12 md:w-2/3 shadow-2xl">
+      <div className="bg-gray-900 p-8 rounded-3xl w-11/12 md:w-2/3 shadow-2xl">
 
-    <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-      {coin.name} - 7 Day Trend
-    </h2>
+        <h2 className="text-2xl font-bold mb-6 text-cyan-400">
+          {coin.name} - 7 Day Trend
+        </h2>
 
-    <Line data={data} />
+        {chartData.length > 0 ? (
+          <Line data={data} />
+        ) : (
+          <p className="text-gray-400">Loading chart...</p>
+        )}
 
-    <button
-      onClick={close}
-      className="mt-6 px-6 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-600 hover:opacity-80 transition"
-    >
-      Close
-    </button>
-  </div>
-</div>
+        <button
+          onClick={close}
+          className="mt-6 px-6 py-2 rounded-xl bg-red-500 hover:bg-red-600 transition"
+        >
+          Close
+        </button>
+      </div>
+    </div>
   );
 }
 

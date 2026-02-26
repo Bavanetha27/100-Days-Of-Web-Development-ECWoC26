@@ -8,7 +8,8 @@ function CoinCard({ coin, addToWatchlist }) {
     <>
       <div className="relative group bg-white/5 border border-white/10 backdrop-blur-xl p-6 rounded-3xl shadow-2xl transition duration-300 hover:scale-105 hover:border-cyan-400/40">
 
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition duration-500 blur-xl"></div>
+        {/* Glow Overlay (Fixed) */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition duration-500 blur-xl pointer-events-none"></div>
 
         <div className="relative flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -43,7 +44,7 @@ function CoinCard({ coin, addToWatchlist }) {
 
         <button
           onClick={() => setOpen(true)}
-          className="mt-6 w-full py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-purple-600 hover:to-cyan-500 transition duration-300"
+          className="relative mt-6 w-full py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-purple-600 hover:to-cyan-500 transition duration-300"
         >
           View Analytics
         </button>

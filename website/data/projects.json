@@ -2477,14 +2477,14 @@
   },
   {
     "day": 212,
-    "title": "Project 212",
+    "title": "Smart Home",
     "tech": [
       "React",
       "Nodejs",
       "Socket io"
     ],
     "folder": "Day 212",
-    "level": "Smart Home",
+    "level": "CAPSTONE",
     "description": "Smart home controller with device management."
   },
   {

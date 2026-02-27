@@ -2841,5 +2841,16 @@
     "folder": "Day 242",
     "level": "CAPSTONE",
     "description": "A responsive web-based cryptocurrency dashboard that provides real-time price tracking, market statistics, interactive trend charts, search and filter functionality, and a watchlist feature to help users monitor and analyze crypto market performance efficiently."
+  },
+  {
+    "day": 243,
+    "title": "TaskForge",
+    "tech": [
+      "React",
+      "Tailwind CSS"
+    ],
+    "folder": "Day 243",
+    "level": "CAPSTONE",
+    "description": "TaskForge is a full-stack freelance marketplace web application that enables clients to post projects and freelancers to bid on them. The platform includes integrated project management tools for tracking progress, managing deadlines, and facilitating communication between clients and freelancers. It provides a seamless workflow from project posting to completion, ensuring efficient collaboration and transparency."
   }
 ]

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 28% 10%;
+    --foreground: 210 20% 92%;
+
+    --card: 215 25% 14%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 215 25% 14%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 215 28% 10%;
+
+    --secondary: 215 20% 20%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 215 18% 18%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 38 92% 60%;
+    --accent-foreground: 215 28% 10%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 18% 22%;
+    --input: 215 18% 22%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+
+    --weather-sun: 45 100% 60%;
+    --weather-rain: 210 80% 60%;
+    --weather-cloud: 215 15% 55%;
+    --weather-snow: 200 30% 85%;
+    --weather-gradient-start: 215 35% 8%;
+    --weather-gradient-end: 220 40% 16%;
+
+    --chart-1: 199 89% 48%;
+    --chart-2: 38 92% 60%;
+    --chart-3: 160 60% 45%;
+    --chart-4: 280 60% 55%;
+    --chart-5: 340 65% 55%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(145deg, hsl(var(--weather-gradient-start)), hsl(var(--weather-gradient-end)));
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .weather-card {
+    @apply bg-card rounded-xl border border-border p-6;
+    backdrop-filter: blur(12px);
+    background: linear-gradient(135deg, hsl(var(--card) / 0.8), hsl(var(--card) / 0.5));
+    box-shadow: 0 8px 32px hsl(var(--background) / 0.4);
+  }
+
+  .weather-card-glow {
+    @apply weather-card;
+    box-shadow: 0 8px 32px hsl(var(--primary) / 0.15), 0 0 0 1px hsl(var(--primary) / 0.1);
+  }
+
+  .weather-stat {
+    @apply flex flex-col items-center gap-2 p-4 rounded-lg bg-muted/50;
+  }
+
+  .weather-search-input {
+    @apply w-full bg-secondary border-border text-foreground placeholder:text-muted-foreground rounded-xl px-5 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all;
+  }
+}

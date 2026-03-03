@@ -2489,11 +2489,11 @@
   },
   {
     "day": 213,
-    "title": "Project 213",
+    "title": "WeatherBuddy",
     "tech": [
-      "HTML",
-      "CSS",
-      "JS"
+      "React",
+      "Tailwind",
+      "OpenWeather API"
     ],
     "folder": "Day 213",
     "level": "CAPSTONE",
